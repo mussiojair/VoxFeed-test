@@ -43,7 +43,7 @@ public class PromotedMessage {
     }
 
     public String getSocialNetwork() {
-        return socialNetwork;
+        return socialNetwork.substring(0,1).toUpperCase() + socialNetwork.substring(1);
     }
 
     public void setSocialNetwork(String socialNetwork) {

@@ -7,6 +7,7 @@
     <color name="colorWhiteTransparent">#99FFFFFF</color>
     <color name="TextColor">#030303</color>
     <color name="ValueTextColor">#8F8E94</color>
+    <color name="ValueTextColorTransparent">#448F8E94</color>
     <color name="InstagramColor">#E4405F</color>
     <color name="FacebookColor">#45609C</color>
     <color name="TwitterColor">#1DA1F2</color>

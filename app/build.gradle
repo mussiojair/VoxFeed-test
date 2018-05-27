@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 
 def VOXFEED_SOURCE = "VOXFEED_SOURCE"
+def DATE_FORMAT_PATTERN = "DATE_FORMAT_PATTERN"
 
 android {
     compileSdkVersion 26
@@ -18,14 +19,16 @@ android {
         release {
 
             buildConfigField('String', VOXFEED_SOURCE, '"https://api.voxfeed.com/public/promoted_messages"')
+            buildConfigField('String', DATE_FORMAT_PATTERN, '"d MMMM"')
 
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
 
-        debug{
+        debug {
 
             buildConfigField('String', VOXFEED_SOURCE, '"https://api.voxfeed.com/public/promoted_messages"')
+            buildConfigField('String', DATE_FORMAT_PATTERN, '"d MMMM"')
 
         }
     }
@@ -37,9 +40,10 @@ dependencies {
     implementation 'com.android.support:recyclerview-v7:26.1.0'
     implementation 'com.android.support:design:26.1.0'
     implementation 'com.android.support.constraint:constraint-layout:1.1.0'
+    implementation 'com.android.support:support-v4:26.1.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation 'com.google.code.gson:gson:2.8.4'
-    implementation 'com.github.bumptech.glide:glide:3.8.0'
+    implementation 'com.github.bumptech.glide:glide:4.0.0'
 }

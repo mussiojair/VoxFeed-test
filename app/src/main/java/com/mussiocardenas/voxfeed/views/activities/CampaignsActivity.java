@@ -1,7 +1,9 @@
 package com.mussiocardenas.voxfeed.views.activities;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -12,22 +14,25 @@ import com.mussiocardenas.voxfeed.R;
 import com.mussiocardenas.voxfeed.presenters.CampaignElement;
 import com.mussiocardenas.voxfeed.presenters.CampaignsPresenter;
 import com.mussiocardenas.voxfeed.views.adapters.CampaignsAdapter;
+import com.mussiocardenas.voxfeed.views.adapters.MainPagerAdapter;
+import com.mussiocardenas.voxfeed.views.fragments.CampaignsFragment;
+import com.mussiocardenas.voxfeed.views.fragments.WelcomeFragment;
 import com.mussiocardenas.voxfeed.views.interfaces.CampaignsViewInterface;
 
 import java.util.HashMap;
 import java.util.List;
 
 public class CampaignsActivity extends AppCompatActivity
-        implements CampaignsViewInterface{
+        implements CampaignsFragment.OnFragmentInteractionListener, WelcomeFragment.OnFragmentInteractionListener {
 
 
-    private CampaignsPresenter presenter;
+
     private TabLayout mTabs;
+    private ViewPager mViewPager;
+    private MainPagerAdapter mPagerAdapter;
     private android.support.v7.app.ActionBar mActionBar;
 
-    private RecyclerView mRecyclerView;
-    private RecyclerView.Adapter mAdapter;
-    private RecyclerView.LayoutManager mLayoutManager;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState){
@@ -36,15 +41,13 @@ public class CampaignsActivity extends AppCompatActivity
 
         mActionBar = getSupportActionBar();
 
-        presenter = new CampaignsPresenter(this);
         mTabs = (TabLayout) findViewById(R.id.tabs);
+
+        mViewPager = (ViewPager) findViewById(R.id.pager);
+
 
         initView();
 
-        mRecyclerView = (RecyclerView) findViewById(R.id.campaignRecycler);
-        mRecyclerView.setHasFixedSize(true);
-        mLayoutManager = new LinearLayoutManager(this);
-        mRecyclerView.setLayoutManager(mLayoutManager);
 
     }
 
@@ -57,25 +60,19 @@ public class CampaignsActivity extends AppCompatActivity
 
     private void initView(){
 
-
-        mTabs.addTab(mTabs.newTab().setText(R.string.inicio));
-        mTabs.addTab(mTabs.newTab().setText(R.string.publicaciones));
+        //mTabs.addTab(mTabs.newTab().setText(R.string.inicio));
+        //mTabs.addTab(mTabs.newTab().setText(R.string.publicaciones));
+        mPagerAdapter = new MainPagerAdapter(this, getSupportFragmentManager());
+        mViewPager.setAdapter(mPagerAdapter);
+        mTabs.setupWithViewPager(mViewPager);
 
         mActionBar.setElevation(0);
 
     }
 
-    @Override
-    public void showCampaigns(final List<HashMap<CampaignElement, String>> campaigns) {
 
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                mAdapter = new CampaignsAdapter(CampaignsActivity.this, campaigns);
-                mRecyclerView.setAdapter(mAdapter);
-            }
-        });
+    @Override
+    public void onFragmentInteraction(Uri uri) {
 
     }
-
 }

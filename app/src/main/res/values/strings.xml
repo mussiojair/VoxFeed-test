@@ -3,4 +3,8 @@
     <string name="inicio">Inicio</string>
     <string name="publicaciones">Publicaciones</string>
     <string name="help">Ayuda</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="welcome_to_voxfeed">Bienvenido a VoxFeed</string>
 </resources>

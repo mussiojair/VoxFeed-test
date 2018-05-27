@@ -5,7 +5,7 @@ public enum CampaignElement {
     CAMPAIGN_NAME,
     CAMPAIGN_COVER_IMAGE,
     USER_USERNAME,
-    USER_PROFILE_NAME,
+    USER_PROFILE_IMAGE,
     BRAND_NAME,
     BRAND_LOGO,
     POST_TEXT,
