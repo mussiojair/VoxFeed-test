@@ -13,6 +13,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.mussiocardenas.voxfeed.R;
 import com.mussiocardenas.voxfeed.presenters.CampaignElement;
+import com.mussiocardenas.voxfeed.utils.StringsFunctions;
 import com.mussiocardenas.voxfeed.views.interfaces.CampaignsInteraction;
 
 import java.util.HashMap;
@@ -99,7 +100,7 @@ public class CampaignsAdapter extends RecyclerView.Adapter<CampaignsAdapter.View
         }
 
         // Go To Detail (text = Date)
-        holder.mGoToDetail.setText(mDataset.get(position).get(CampaignElement.DATE));
+        holder.mGoToDetail.setText(StringsFunctions.capitalizeFirstCharacter(mDataset.get(position).get(CampaignElement.DATE)));
         holder.mGoToDetail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

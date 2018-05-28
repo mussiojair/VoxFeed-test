@@ -46,8 +46,9 @@
                     android:id="@+id/brand_logo"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
+                    android:layout_marginLeft="20dp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
                     android:adjustViewBounds="true"
                     />
 
@@ -55,33 +56,38 @@
                 <TextView
                     android:id="@+id/brand_name"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="0dp"
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
+                    android:gravity="bottom"
                     android:text="TextView"
+                    android:textAlignment="gravity"
                     android:textColor="@color/colorWhite"
-                    app:layout_constraintStart_toEndOf="@id/brand_logo"
-                    app:layout_constraintTop_toBottomOf="@id/top_line" />
-
+                    app:layout_constraintBottom_toTopOf="@+id/campaign_name"
+                    app:layout_constraintStart_toEndOf="@id/brand_logo" />
 
                 <TextView
                     android:id="@+id/campaign_name"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="0dp"
                     android:layout_marginStart="8dp"
+                    android:layout_marginBottom="4dp"
                     android:textSize="14dp"
                     android:text="TextView"
+                    android:gravity="top"
+                    android:textAlignment="gravity"
                     android:textColor="@color/colorWhite"
                     app:layout_constraintStart_toEndOf="@id/brand_logo"
-                    app:layout_constraintTop_toBottomOf="@id/brand_name" />
+                    app:layout_constraintBottom_toBottomOf="parent"/>
 
                 <TextView
                     android:id="@+id/earnings"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/colorPrimary"
+                    android:layout_marginBottom="4dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     android:layout_marginRight="20dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     />
 
             </android.support.constraint.ConstraintLayout>

@@ -17,15 +17,11 @@ import com.bumptech.glide.request.RequestOptions;
 import com.mussiocardenas.voxfeed.R;
 import com.mussiocardenas.voxfeed.presenters.CampaignElement;
 import com.mussiocardenas.voxfeed.presenters.CampaignPresenter;
-import com.mussiocardenas.voxfeed.views.adapters.CampaignStats;
+import com.mussiocardenas.voxfeed.utils.StringsFunctions;
 import com.mussiocardenas.voxfeed.views.adapters.CampaignStatsAdapter;
 import com.mussiocardenas.voxfeed.views.interfaces.CampaignViewInterface;
 
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -149,17 +145,17 @@ public class CampaignDetailFragment extends Fragment implements CampaignViewInte
         mCampaignName.setText(campaign.get(CampaignElement.CAMPAIGN_NAME));
 
         // Paint Earnings
-        mEarnings.setText("$ " + campaign.get(CampaignElement.ID) + " USD");
+        mEarnings.setText(StringsFunctions.formatCurrency(Float.parseFloat(campaign.get(CampaignElement.EARNINGS)) ) + " USD");
 
         // Paint Cover Image
         Glide.with(getActivity()).load(campaign.get(CampaignElement.CAMPAIGN_COVER_IMAGE)).into(mCoverImage);
 
         // Paint Campaign Stats
-        mLikes.setText(campaign.get(CampaignElement.STATS_LIKES));
-        mClicks.setText(campaign.get(CampaignElement.STATS_CLICK));
-        mComments.setText(campaign.get(CampaignElement.STATS_COMMENTS));
-        mShares.setText(campaign.get(CampaignElement.STATS_SHARES));
-        mAudience.setText(campaign.get(CampaignElement.STATS_AUDIENCE));
+        mLikes.setText(StringsFunctions.formatDecimal( Integer.parseInt(campaign.get(CampaignElement.STATS_LIKES)) ));
+        mClicks.setText(StringsFunctions.formatDecimal( Integer.parseInt(campaign.get(CampaignElement.STATS_CLICK) )));
+        mComments.setText(StringsFunctions.formatDecimal( Integer.parseInt(campaign.get(CampaignElement.STATS_COMMENTS)) ));
+        mShares.setText(StringsFunctions.formatDecimal( Integer.parseInt(campaign.get(CampaignElement.STATS_SHARES)) ));
+        mAudience.setText(StringsFunctions.formatDecimal( Integer.parseInt(campaign.get(CampaignElement.STATS_AUDIENCE)) ));
 
 
         // Paint Social Network
