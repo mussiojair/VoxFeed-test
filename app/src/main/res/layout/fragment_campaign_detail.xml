@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_margin="10dp"
     tools:context=".views.fragments.CampaignDetailFragment">
@@ -42,7 +43,7 @@
             android:id="@+id/stats_likes_icon"
             android:layout_width="0dp"
             android:layout_height="50dp"
-            android:src="@mipmap/icon_likes"
+            app:srcCompat="@drawable/icon_likes"
             android:layout_weight="1"/>
 
         <TextView
@@ -86,7 +87,7 @@
             android:id="@+id/stats_clicks_icon"
             android:layout_width="0dp"
             android:layout_height="50dp"
-            android:src="@mipmap/icon_clicks"
+            app:srcCompat="@drawable/icon_clicks"
             android:layout_weight="1"/>
 
         <TextView
@@ -129,7 +130,7 @@
             android:id="@+id/stats_comments_icon"
             android:layout_width="0dp"
             android:layout_height="50dp"
-            android:src="@mipmap/icon_comments"
+            app:srcCompat="@drawable/icon_comments"
             android:layout_weight="1"/>
 
         <TextView
@@ -173,7 +174,7 @@
             android:id="@+id/stats_shares_icon"
             android:layout_width="0dp"
             android:layout_height="50dp"
-            android:src="@mipmap/icon_share"
+            app:srcCompat="@drawable/icon_share"
             android:layout_weight="1"/>
 
         <TextView
@@ -218,7 +219,7 @@
             android:id="@+id/stats_audience_icon"
             android:layout_width="0dp"
             android:layout_height="50dp"
-            android:src="@mipmap/icon_reach"
+            app:srcCompat="@drawable/icon_reach"
             android:layout_weight="1"/>
 
         <TextView
