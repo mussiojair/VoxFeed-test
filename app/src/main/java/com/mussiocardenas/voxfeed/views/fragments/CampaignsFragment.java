@@ -1,6 +1,7 @@
 package com.mussiocardenas.voxfeed.views.fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -15,6 +16,7 @@ import com.mussiocardenas.voxfeed.presenters.CampaignElement;
 import com.mussiocardenas.voxfeed.presenters.CampaignsPresenter;
 import com.mussiocardenas.voxfeed.views.activities.CampaignsActivity;
 import com.mussiocardenas.voxfeed.views.adapters.CampaignsAdapter;
+import com.mussiocardenas.voxfeed.views.interfaces.CampaignsInteraction;
 import com.mussiocardenas.voxfeed.views.interfaces.CampaignsViewInterface;
 
 import java.util.HashMap;
@@ -28,7 +30,7 @@ import java.util.List;
  * Use the {@link CampaignsFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class CampaignsFragment extends Fragment implements CampaignsViewInterface {
+public class CampaignsFragment extends Fragment implements CampaignsViewInterface, CampaignsInteraction {
 
 
     private OnFragmentInteractionListener mListener;
@@ -76,15 +78,11 @@ public class CampaignsFragment extends Fragment implements CampaignsViewInterfac
         mLayoutManager = new LinearLayoutManager(getContext());
         mRecyclerView.setLayoutManager(mLayoutManager);
 
+
+
         return v;
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
 
     @Override
     public void onAttach(Context context) {
@@ -110,11 +108,16 @@ public class CampaignsFragment extends Fragment implements CampaignsViewInterfac
         getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                mAdapter = new CampaignsAdapter(getActivity(), campaigns);
+                mAdapter = new CampaignsAdapter(getActivity(), campaigns, CampaignsFragment.this);
                 mRecyclerView.setAdapter(mAdapter);
             }
         });
 
+    }
+
+    @Override
+    public void goToDetail(int campaignId) {
+        mListener.onFragmentInteraction(campaignId);
     }
 
 
@@ -130,6 +133,7 @@ public class CampaignsFragment extends Fragment implements CampaignsViewInterfac
      */
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+        void onFragmentInteraction(int campaignId);
     }
+
 }

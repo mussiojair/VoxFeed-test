@@ -25,7 +25,7 @@ public class CampaignsPresenter {
     public CampaignsPresenter( CampaignsViewInterface view ){
 
         this.view = view;
-        this.feed = new FeedService();
+        this.feed = FeedService.getInstance();
 
         new Thread(new Runnable() {
             @Override
@@ -40,6 +40,9 @@ public class CampaignsPresenter {
                     for( PromotedMessage pm : messages){
 
                         HashMap<CampaignElement, String> preparedData = new HashMap<>();
+
+                        // ID
+                        preparedData.put( CampaignElement.ID, String.valueOf(pm.getId()));
 
                         // SN Account Data
                         preparedData.put( CampaignElement.SOCIAL_NETWORK, pm.getSocialNetwork());

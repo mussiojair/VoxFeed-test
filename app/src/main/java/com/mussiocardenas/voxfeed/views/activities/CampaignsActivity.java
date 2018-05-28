@@ -1,5 +1,6 @@
 package com.mussiocardenas.voxfeed.views.activities;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -60,8 +61,6 @@ public class CampaignsActivity extends AppCompatActivity
 
     private void initView(){
 
-        //mTabs.addTab(mTabs.newTab().setText(R.string.inicio));
-        //mTabs.addTab(mTabs.newTab().setText(R.string.publicaciones));
         mPagerAdapter = new MainPagerAdapter(this, getSupportFragmentManager());
         mViewPager.setAdapter(mPagerAdapter);
         mTabs.setupWithViewPager(mViewPager);
@@ -72,7 +71,10 @@ public class CampaignsActivity extends AppCompatActivity
 
 
     @Override
-    public void onFragmentInteraction(Uri uri) {
-
+    public void onFragmentInteraction(int campaignId) {
+        Intent intent = new Intent(this, CampaignDetailActivity.class);
+        intent.putExtra(CampaignElement.ID.toString(), campaignId);
+        startActivity(intent);
     }
+
 }

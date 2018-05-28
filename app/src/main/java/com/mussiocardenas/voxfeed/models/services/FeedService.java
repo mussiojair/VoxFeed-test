@@ -14,13 +14,23 @@ public class FeedService {
 
     public static String STATE_READY = "STATE_READY";
     public static String STATE_EMPTY = "STATE_EMPTY";
+    private static FeedService feedService;
 
     private String state;
     private ArrayList<PromotedMessage> promotedMessages;
 
-    public FeedService(){
+
+    private FeedService(){
         state = STATE_EMPTY;
         promotedMessages = new ArrayList<>();
+    }
+
+    public static FeedService getInstance(){
+        if(feedService == null){
+            feedService = new FeedService();
+        }
+
+        return feedService;
     }
 
     public String getState() {
@@ -50,7 +60,15 @@ public class FeedService {
         }catch(Exception e){
             e.printStackTrace();
         }
+    }
 
+    public PromotedMessage getPromotedMessage(int id){
 
+        for( PromotedMessage pm: promotedMessages){
+            if(pm.getId() == id)
+                return pm;
+        }
+
+        return null;
     }
 }

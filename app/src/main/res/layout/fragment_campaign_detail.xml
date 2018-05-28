@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_margin="10dp"
+    tools:context=".views.fragments.CampaignDetailFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:id="@+id/textViewTest"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/TextColor"
+        android:textStyle="bold"
+        android:text="@string/campaign_invitation_text"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="20dp"/>
+
+    <ListView
+        android:id="@+id/campaignStats"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"></ListView>
+
+
+
+
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp"
+        android:layout_margin="8dp"
+        android:weightSum="4">
+
+
+        <ImageView
+            android:id="@+id/stats_likes_icon"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:src="@mipmap/icon_likes"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:id="@+id/stats_likes_text"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:textColor="@color/TextColor"
+            android:gravity="center_vertical"
+            android:text="@string/likes"
+            android:layout_weight="2" />
+
+        <TextView
+            android:id="@+id/stats_likes_value"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical|right"
+            android:textColor="@color/ValueTextColor"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/ValueTextColorTransparent"
+        />
+
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp"
+        android:layout_margin="8dp"
+        android:weightSum="4">
+
+
+        <ImageView
+            android:id="@+id/stats_clicks_icon"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:src="@mipmap/icon_clicks"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:id="@+id/stats_clicks_text"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:textColor="@color/TextColor"
+            android:gravity="center_vertical"
+            android:text="@string/clicks"
+            android:layout_weight="2" />
+
+        <TextView
+            android:id="@+id/stats_clicks_value"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:textAlignment="inherit"
+            android:gravity="center_vertical|right"
+            android:textColor="@color/ValueTextColor"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/ValueTextColorTransparent"
+        />
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp"
+        android:layout_margin="8dp"
+        android:weightSum="4">
+
+
+        <ImageView
+            android:id="@+id/stats_comments_icon"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:src="@mipmap/icon_comments"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:id="@+id/stats_comments_text"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:textColor="@color/TextColor"
+            android:gravity="center_vertical"
+            android:text="@string/comments"
+            android:layout_weight="2" />
+
+        <TextView
+            android:id="@+id/stats_comments_value"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:textAlignment="inherit"
+            android:gravity="center_vertical|right"
+            android:textColor="@color/ValueTextColor"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/ValueTextColorTransparent"
+        />
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp"
+        android:layout_margin="8dp"
+        android:weightSum="4">
+
+
+        <ImageView
+            android:id="@+id/stats_shares_icon"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:src="@mipmap/icon_share"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:id="@+id/stats_shares_text"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:textColor="@color/TextColor"
+            android:gravity="center_vertical"
+            android:text="@string/shares"
+            android:layout_weight="2" />
+
+        <TextView
+            android:id="@+id/stats_shares_value"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:textAlignment="inherit"
+            android:gravity="center_vertical|right"
+            android:textColor="@color/ValueTextColor"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/ValueTextColorTransparent"
+        />
+
+
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp"
+        android:layout_margin="8dp"
+        android:weightSum="4">
+
+
+        <ImageView
+            android:id="@+id/stats_audience_icon"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:src="@mipmap/icon_reach"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:id="@+id/stats_audience_text"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:textColor="@color/TextColor"
+            android:gravity="center_vertical"
+            android:text="@string/audience"
+            android:layout_weight="2" />
+
+        <TextView
+            android:id="@+id/stats_audience_value"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:textAlignment="inherit"
+            android:gravity="center_vertical|right"
+            android:textColor="@color/ValueTextColor"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/ValueTextColorTransparent"
+        />
+
+
+
+
+    <Button
+        android:id="@+id/goToSN"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="50dp"
+        android:paddingBottom="50dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:text="@string/go_to_sn_text"
+        android:textColor="@color/InstagramColor" />
+
+</LinearLayout>

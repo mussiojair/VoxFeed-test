@@ -13,6 +13,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.mussiocardenas.voxfeed.R;
 import com.mussiocardenas.voxfeed.presenters.CampaignElement;
+import com.mussiocardenas.voxfeed.views.interfaces.CampaignsInteraction;
 
 import java.util.HashMap;
 import java.util.List;
@@ -21,6 +22,7 @@ public class CampaignsAdapter extends RecyclerView.Adapter<CampaignsAdapter.View
 
     private List<HashMap<CampaignElement, String>> mDataset;
     private Context context;
+    private CampaignsInteraction mCampaignInteraction;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         // each data item is just a string in this case
@@ -42,9 +44,10 @@ public class CampaignsAdapter extends RecyclerView.Adapter<CampaignsAdapter.View
         }
     }
 
-    public CampaignsAdapter(Context context, List<HashMap<CampaignElement, String>> mDataset) {
+    public CampaignsAdapter(Context context, List<HashMap<CampaignElement, String>> mDataset, CampaignsInteraction campaignsInteraction) {
         this.mDataset = mDataset;
         this.context = context;
+        this.mCampaignInteraction = campaignsInteraction;
     }
 
     @Override
@@ -65,7 +68,7 @@ public class CampaignsAdapter extends RecyclerView.Adapter<CampaignsAdapter.View
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder holder, final int position) {
 
         // post text
         holder.mPostText.setText(mDataset.get(position).get(CampaignElement.POST_TEXT));
@@ -97,6 +100,12 @@ public class CampaignsAdapter extends RecyclerView.Adapter<CampaignsAdapter.View
 
         // Go To Detail (text = Date)
         holder.mGoToDetail.setText(mDataset.get(position).get(CampaignElement.DATE));
+        holder.mGoToDetail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mCampaignInteraction.goToDetail(Integer.parseInt( mDataset.get(position).get(CampaignElement.ID)));
+            }
+        });
     }
 
     @Override
