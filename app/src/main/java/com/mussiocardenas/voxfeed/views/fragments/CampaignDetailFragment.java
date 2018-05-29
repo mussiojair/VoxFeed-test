@@ -1,15 +1,21 @@
 package com.mussiocardenas.voxfeed.views.fragments;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.PopupWindowCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -18,10 +24,13 @@ import com.mussiocardenas.voxfeed.R;
 import com.mussiocardenas.voxfeed.presenters.CampaignElement;
 import com.mussiocardenas.voxfeed.presenters.CampaignPresenter;
 import com.mussiocardenas.voxfeed.utils.StringsFunctions;
+import com.mussiocardenas.voxfeed.views.activities.WebActivity;
 import com.mussiocardenas.voxfeed.views.adapters.CampaignStatsAdapter;
 import com.mussiocardenas.voxfeed.views.interfaces.CampaignViewInterface;
 
 import java.util.HashMap;
+
+import static android.content.Context.LAYOUT_INFLATER_SERVICE;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -31,7 +40,7 @@ import java.util.HashMap;
  * Use the {@link CampaignDetailFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class CampaignDetailFragment extends Fragment implements CampaignViewInterface{
+public class CampaignDetailFragment extends Fragment implements CampaignViewInterface, View.OnClickListener {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_ID = "id";
@@ -49,6 +58,9 @@ public class CampaignDetailFragment extends Fragment implements CampaignViewInte
     private TextView mEarnings;
     private ImageView mBrandLogo;
     private CampaignStatsAdapter mAdapter;
+    private String mPostLink;
+    private View mView;
+
 
     // private OnFragmentInteractionListener mListener;
 
@@ -86,16 +98,16 @@ public class CampaignDetailFragment extends Fragment implements CampaignViewInte
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v =  inflater.inflate(R.layout.fragment_campaign_detail, container, false);;
+        mView =  inflater.inflate(R.layout.fragment_campaign_detail, container, false);;
 
-        final TextView textViewTest = (TextView) v.findViewById(R.id.textViewTest);
-        mGoToSN = (Button) v.findViewById(R.id.goToSN);
-        mCampaignStats = (ListView) v.findViewById(R.id.campaignStats);
-        mLikes = (TextView) v.findViewById(R.id.stats_likes_value);
-        mShares = (TextView) v.findViewById(R.id.stats_shares_value);
-        mComments = (TextView) v.findViewById(R.id.stats_comments_value);
-        mClicks = (TextView) v.findViewById(R.id.stats_clicks_value);
-        mAudience = (TextView) v.findViewById(R.id.stats_audience_value);
+        final TextView textViewTest = (TextView) mView.findViewById(R.id.textViewTest);
+        mGoToSN = (Button) mView.findViewById(R.id.goToSN);
+        mCampaignStats = (ListView) mView.findViewById(R.id.campaignStats);
+        mLikes = (TextView) mView.findViewById(R.id.stats_likes_value);
+        mShares = (TextView) mView.findViewById(R.id.stats_shares_value);
+        mComments = (TextView) mView.findViewById(R.id.stats_comments_value);
+        mClicks = (TextView) mView.findViewById(R.id.stats_clicks_value);
+        mAudience = (TextView) mView.findViewById(R.id.stats_audience_value);
         mCoverImage = ((AppCompatActivity)getActivity()).findViewById(R.id.toolbar_image);
         mBrandLogo = ((AppCompatActivity)getActivity()).findViewById(R.id.brand_logo);
         mBrandName = ((AppCompatActivity)getActivity()).findViewById(R.id.brand_name);
@@ -105,7 +117,8 @@ public class CampaignDetailFragment extends Fragment implements CampaignViewInte
         // Start presenter
         presenter = new CampaignPresenter(mId, this);
 
-        return v;
+
+        return mView;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -115,9 +128,11 @@ public class CampaignDetailFragment extends Fragment implements CampaignViewInte
         }
     }*/
 
+
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+
         /* if (context instanceof OnFragmentInteractionListener) {
             mListener = (OnFragmentInteractionListener) context;
         } else {
@@ -168,7 +183,27 @@ public class CampaignDetailFragment extends Fragment implements CampaignViewInte
         }else if(sn.toLowerCase().contains("twitter")){
             mGoToSN.setTextColor(getActivity().getResources().getColor(R.color.TwitterColor));
         }
+
+        mGoToSN.setOnClickListener(this);
+
+        // Set mPostLink
+        mPostLink = campaign.get(CampaignElement.POST_LINK);
+
     }
+
+    @Override
+    public void onClick(View view) {
+
+        if(view == mGoToSN){
+
+            Intent intent = new Intent(getActivity(), WebActivity.class);
+            intent.putExtra(CampaignElement.POST_LINK.toString(), mPostLink);
+            startActivity(intent);
+
+        }
+    }
+
+
 
     /**
      * This interface must be implemented by activities that contain this

@@ -49,6 +49,8 @@ public class FeedService {
 
         try{
 
+            this.promotedMessages.clear();
+
             final PromotedMessage[] promotedMessages = new Gson().fromJson(jsonContent, PromotedMessage[].class);
 
             for( PromotedMessage pm : promotedMessages ){

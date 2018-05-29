@@ -22,7 +22,8 @@
         <activity
             android:name=".views.activities.CampaignDetailActivity"
             android:label="@string/title_activity_campaign_detail"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".views.activities.WebActivity"></activity>
     </application>
 
 </manifest>

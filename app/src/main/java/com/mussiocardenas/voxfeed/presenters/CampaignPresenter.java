@@ -37,6 +37,8 @@ public class CampaignPresenter {
                 campaign.put(CampaignElement.EARNINGS, String.valueOf(pm.getEarnings()));
                 campaign.put(CampaignElement.SOCIAL_NETWORK, pm.getSocialNetwork());
 
+                campaign.put(CampaignElement.POST_LINK, pm.getPost().getLink());
+
                 campaign.put(CampaignElement.BRAND_LOGO, pm.getBrand().getLogo());
                 campaign.put(CampaignElement.BRAND_NAME, pm.getBrand().getName());
 
