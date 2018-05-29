@@ -59,13 +59,11 @@ public class CampaignDetailFragment extends Fragment implements CampaignViewInte
     private CampaignPresenter presenter;
 
     private Button mGoToSN;
-    private ListView mCampaignStats;
     private ImageView mCoverImage;
     private TextView mLikes, mClicks, mComments, mShares, mAudience;
     private TextView mBrandName, mCampaignName;
     private TextView mEarnings;
     private ImageView mBrandLogo;
-    private CampaignStatsAdapter mAdapter;
     private String mPostLink;
     private View mView;
 
@@ -110,7 +108,6 @@ public class CampaignDetailFragment extends Fragment implements CampaignViewInte
 
         final TextView textViewTest = (TextView) mView.findViewById(R.id.textViewTest);
         mGoToSN = (Button) mView.findViewById(R.id.goToSN);
-        mCampaignStats = (ListView) mView.findViewById(R.id.campaignStats);
         mLikes = (TextView) mView.findViewById(R.id.stats_likes_value);
         mShares = (TextView) mView.findViewById(R.id.stats_shares_value);
         mComments = (TextView) mView.findViewById(R.id.stats_comments_value);
