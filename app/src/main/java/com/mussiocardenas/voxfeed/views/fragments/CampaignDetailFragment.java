@@ -2,8 +2,11 @@ package com.mussiocardenas.voxfeed.views.fragments;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Animatable;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.PopupWindowCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -19,7 +22,12 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.Request;
 import com.bumptech.glide.request.RequestOptions;
+import com.bumptech.glide.request.target.SimpleTarget;
+import com.bumptech.glide.request.target.SizeReadyCallback;
+import com.bumptech.glide.request.target.Target;
+import com.bumptech.glide.request.transition.Transition;
 import com.mussiocardenas.voxfeed.R;
 import com.mussiocardenas.voxfeed.presenters.CampaignElement;
 import com.mussiocardenas.voxfeed.presenters.CampaignPresenter;
@@ -163,7 +171,11 @@ public class CampaignDetailFragment extends Fragment implements CampaignViewInte
         mEarnings.setText(StringsFunctions.formatCurrency(Float.parseFloat(campaign.get(CampaignElement.EARNINGS)) ) + " USD");
 
         // Paint Cover Image
-        Glide.with(getActivity()).load(campaign.get(CampaignElement.CAMPAIGN_COVER_IMAGE)).into(mCoverImage);
+        Glide.with(getActivity())
+                .load(campaign.get(CampaignElement.CAMPAIGN_COVER_IMAGE))
+                .into(mCoverImage);
+
+
 
         // Paint Campaign Stats
         mLikes.setText(StringsFunctions.formatDecimal( Integer.parseInt(campaign.get(CampaignElement.STATS_LIKES)) ));
@@ -188,6 +200,9 @@ public class CampaignDetailFragment extends Fragment implements CampaignViewInte
 
         // Set mPostLink
         mPostLink = campaign.get(CampaignElement.POST_LINK);
+
+
+
 
     }
 

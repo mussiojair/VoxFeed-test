@@ -1,5 +1,7 @@
 package com.mussiocardenas.voxfeed.views.activities;
 
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -11,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.FrameLayout;
 
 import com.mussiocardenas.voxfeed.R;
 import com.mussiocardenas.voxfeed.presenters.CampaignElement;
@@ -19,6 +22,7 @@ import com.mussiocardenas.voxfeed.views.fragments.CampaignDetailFragment;
 public class CampaignDetailActivity extends AppCompatActivity {
 
 
+    private FrameLayout mLoader;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +34,8 @@ public class CampaignDetailActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("");
 
+        mLoader = (FrameLayout) findViewById(R.id.loader_layout);
+
         Bundle data = this.getIntent().getExtras();
 
         int campaignId = data.getInt(CampaignElement.ID.toString());
@@ -39,6 +45,38 @@ public class CampaignDetailActivity extends AppCompatActivity {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.add(R.id.fragmentContainer, fragment);
         fragmentTransaction.commit();
+
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(1000);
+
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            // mLoader.setVisibility(View.GONE);
+                            AnimatorSet set = new AnimatorSet();
+                            // Using property animation
+                            ObjectAnimator animation = ObjectAnimator.ofFloat(mLoader,
+                                    "alpha", 1f, 0f);
+                            animation.setDuration(500);
+                            set.play(animation);
+                            set.start();
+                        }
+                    });
+
+                } catch (InterruptedException ie){
+                    ie.printStackTrace();
+                }
+            }
+        }).start();
 
     }
 

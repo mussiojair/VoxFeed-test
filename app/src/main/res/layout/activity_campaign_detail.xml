@@ -109,4 +109,19 @@
 
     <include layout="@layout/content_campaign_detail" />
 
+    <FrameLayout
+        android:id="@+id/loader_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorWhite">
+
+        <ProgressBar
+            android:theme="@style/CircularProgress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            />
+
+    </FrameLayout>
+
 </android.support.design.widget.CoordinatorLayout>
